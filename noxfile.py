@@ -9,8 +9,6 @@ nox.options.error_on_external_run = True
 @nox.parametrize("django", ("3.2", "4.2"))
 def tests(session, django):
     session.install("poetry")
-    session.install(f"django>={django},<{django}.999")
-    session.install("factory-boy>=3.3.0,<3.3.99999")
     session.run(
         "poetry",
         "install",
@@ -18,6 +16,7 @@ def tests(session, django):
         # its own virtualenv
         env={"VIRTUAL_ENV": session.virtualenv.location},
     )
+    session.install(f"django>={django},<{django}.999")
     session.run("pytest")
 
 
