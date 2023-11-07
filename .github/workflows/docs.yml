@@ -16,7 +16,7 @@ jobs:
             path: ~/.cache/pip
             key: ${{ runner.os }}-pip-1
       - name: Set up Nox
-        uses: excitedleigh/setup-nox@2.1.0
+        uses: excitedleigh/setup-nox@v2.1.0
       - name: Build docs
         run: nox -s docs
       - name: Deploy
